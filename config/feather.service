@@ -1,0 +1,48 @@
+#
+# systemd unit file
+#
+[Unit]
+Description=Feather CL web application
+##          ^^^^^^^^^^^^^^^^^^^^^^^^^^ CHANGE THIS!!
+
+# start us only once the network and logging subsystems are available,
+# consider adding redis-server.service if Redis is local and systemd-managed.
+After=syslog.target network.target
+
+# See these pages for lots of options:
+#
+#   https://www.freedesktop.org/software/systemd/man/systemd.service.html
+#   https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+#
+
+[Service]
+# You may want to use
+# Type=notify
+# to ensure service is not marked as started before it actually did.
+# Include sd_notify gem to send a message on sidekiq startup like
+#   Sidekiq.configure_server do |config|
+#     config.on(:startup) { SdNotify.ready }
+#   end
+# to let systemd know when the service is actually started.
+Type=simple
+WorkingDirectory=/opt/feather/bin/
+##                    ^^^^^^^ CHANGE THIS!!
+ExecStart=/usr/local/bin/feather
+##                       ^^^^^^^ CHANGE THIS!!
+
+User=deploy
+##   ^^^^^^ CHANGE THIS!!
+Group=deploy
+##    ^^^^^^ CHANGE THIS!!
+UMask=0002
+
+# if we crash, restart
+RestartSec=1
+Restart=on-failure
+
+# Identifier in syslog
+SyslogIdentifier=feather
+##               ^^^^^^ CHANGE THIS!!
+
+[Install]
+WantedBy=multi-user.target
