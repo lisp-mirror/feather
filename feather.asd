@@ -27,10 +27,10 @@
                ;; (:file "specials")
                ;; (:file "utils")
                ;; (:file "uuid-unicly")
-               ;; (:module "db"
-               ;;          :components ((:file "package")
-               ;;                       (:file "base")
-               ;;                       (:file "users")
+               (:module "db"
+                        :components ((:file "package")
+                                     (:file "base")
+                                     (:file "usernames")))
                ;; (:module "logic"
                ;;          :components ((:file "package")
                ;;                       (:file "logic")
