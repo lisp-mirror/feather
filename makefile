@@ -33,7 +33,7 @@ B_FLAGS += --entry $(QL_SYSTEM):main
 B_FLAGS += --eval '(format t "~%***** $(QL_SYSTEM) was loaded from~%~A~%*****~%" (asdf:system-source-file (asdf:find-system :$(QL_SYSTEM))))'
 
 # Flags for DB migration
-QL_MIGRATE_SYSTEM = $(QL_SYSTEM)/migration
+QL_MIGRATE_SYSTEM = $(QL_SYSTEM)/migrate
 MIGRATE_FLAGS =  --no-init 
 MIGRATE_FLAGS += --batch 
 MIGRATE_FLAGS += --load $(SRCDIR)/prep-quicklisp.lisp
@@ -41,7 +41,7 @@ MIGRATE_FLAGS += --eval '(ql:quickload :qlot)'
 MIGRATE_FLAGS += --eval '(qlot:install :$(QL_MIGRATE_SYSTEM))'
 MIGRATE_FLAGS += --eval '(qlot:quickload :$(QL_MIGRATE_SYSTEM))'
 MIGRATE_FLAGS += --eval '(format t "~%***** $(QL_MIGRATE_SYSTEM) was loaded from~%~A~%*****~%" (asdf:system-source-file (asdf:find-system :$(QL_MIGRATE_SYSTEM))))'
-MIGRATE_FLAGS += --eval '($(QL_SYSTEM)-migration:upgrade)'
+MIGRATE_FLAGS += --eval '($(QL_SYSTEM)-migrate:upgrade)'
 MIGRATE_FLAGS += --eval '(quit)'
 
 # Location: Source files
