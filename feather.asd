@@ -31,9 +31,9 @@
                         :components ((:file "package")
                                      (:file "base")
                                      (:file "usernames")))
-               ;; (:module "logic"
-               ;;          :components ((:file "package")
-               ;;                       (:file "logic")
+               (:module "logic"
+                        :components ((:file "package")
+                                     (:file "logic")))
                ;; (:module "ui"
                ;;          :components ((:file "routes")
                ;;                       (:file "api")

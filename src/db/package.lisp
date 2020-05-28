@@ -7,6 +7,7 @@
            :created-at
            :modified-at)
 
-  ;; User
-  (:export :insert-username-record
+  ;; Username
+  (:export :username
+           :insert-username-record
            :list-username-records))
