@@ -6,7 +6,43 @@
 <section class="section">
   <div class="columns">   
     <div class="column">
-      <h1>Hello World!</h1>
+      <h1 class="title">Hello World!</h1>
+
+      <h2 class="title is-4">API call to add a name.</h2>
+
+      <form action="/api/usernames" method="post" id="formAddName">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="" value=""
+                   name="app-name" id="buttonAdd">
+          </div>
+        </div>
+        
+        <button class="button is-primary" type="submit" >Add</button>
+      </form>
+
+      <h2 class="title is-4">Use API to display last 5 names.</h2>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Key</abbr></th>
+            <th>User name</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr>
+            <th>1</th>
+            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester City</a> <strong>(C)</strong>
+            </td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C.">Arsenal</a></td>
+          </tr>
+        </tbody>
+      </table>      
     </div>
   </div>
 </section>
