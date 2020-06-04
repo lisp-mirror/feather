@@ -24,8 +24,8 @@
   :pathname "src"
   :components ((:file "package")
                ;; (:file "conditions")
-               ;; (:file "specials")
-               ;; (:file "utils")
+               (:file "specials")
+               (:file "utils")
                ;; (:file "uuid-unicly")
                (:module "db"
                         :components ((:file "package")
