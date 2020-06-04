@@ -55,4 +55,4 @@
     (&post username)
   "Create a new username."
   (check-parameter-non-zero-string username)
-  (st-json:write-json-to-string (feather.logic:create-username username))
+  (st-json:write-json-to-string (feather.logic:create-username username)))

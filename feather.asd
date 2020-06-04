@@ -19,10 +19,11 @@
                :postmodern
                :st-json
                :str
-               :uuid)
+               :uuid
+               :verbose)
   :pathname "src"
   :components ((:file "package")
-               ;; (:file "conditions")
+               (:file "conditions")
                (:file "specials")
                (:file "utils")
                (:module "db"
@@ -35,8 +36,7 @@
                (:module "ui"
                         :components ((:file "ui-common")
                                      (:file "routes")
-;;                                     (:file "api")
-                                     ))
+                                     (:file "api")))
                (:file "main"))
   :in-order-to ((test-op (test-op :feather/test))))
 
