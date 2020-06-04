@@ -10,7 +10,6 @@
                :cl-hash-util
                :cl-postgres-plus-uuid
                :cl-pass
-               :cl-who
                :darts.lib.email-address
                :djula
                :easy-routes
@@ -26,7 +25,6 @@
                ;; (:file "conditions")
                (:file "specials")
                (:file "utils")
-               ;; (:file "uuid-unicly")
                (:module "db"
                         :components ((:file "package")
                                      (:file "base")
@@ -34,10 +32,11 @@
                (:module "logic"
                         :components ((:file "package")
                                      (:file "logic")))
-               ;; (:module "ui"
-               ;;          :components ((:file "routes")
-               ;;                       (:file "api")
-               ;;                       ))
+               (:module "ui"
+                        :components ((:file "ui-common")
+                                     (:file "routes")
+;;                                     (:file "api")
+                                     ))
                (:file "main"))
   :in-order-to ((test-op (test-op :feather/test))))
 

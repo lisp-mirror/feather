@@ -41,7 +41,7 @@
   (when user-dribble-p (format t "Starting web server.
 Point your browser to http://localhost:8080~%"))
   (setf *acceptor* (make-instance
-                    'easy-routes:routes-acceptor
+                    'easy-routes:easy-routes-acceptor
                     :address "localhost"
                     :port 8080
                     :access-log-destination (if debug-logs-p
