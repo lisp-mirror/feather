@@ -67,13 +67,13 @@
                (:file "main")
                (:module "db"
                         :components ((:file "suite")
-                                     (:file "users")
-                                     ))
-               (:module "logic"
-                        :components ((:file "suite")
-                                     ))
-               (:module "ui"
-                        :components ((:file "suite")
-                                     (:file "routes")
-                                     (:file "api"))))
+                                     (:file "usernames")))
+               ;; (:module "logic"
+               ;;          :components ((:file "suite")
+               ;;                       ))
+               ;; (:module "ui"
+               ;;          :components ((:file "suite")
+               ;;                       (:file "routes")
+               ;;                       (:file "api")))
+               )
   :perform (test-op (o c) (symbol-call :fiveam '#:run-all-tests)))
