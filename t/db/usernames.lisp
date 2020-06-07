@@ -7,7 +7,8 @@
 ;;;; Fixtures ******************************************************************
 
 (def-fixture connected-db ()
-  "Open and close DB connection."
+  "Open and close DB connection. This is not used when testing the API because
+   the request handler opens its own connection."
   (postmodern:with-connection
       (list feather::*db-name* feather::*db-user* feather::*db-pwd*
             feather::*db-host* :pooled-p nil)
@@ -21,7 +22,7 @@
            nil (local-time:Now)
            :format '(:year :month :day "-" :hour :min :sec :usec))))
 
-;;;; insert-username-record ****************************************************
+;;;; Tests *********************************************************************
 
 (def-test insert-username-record ()  
   "Insertion works and initialised data is correct."
@@ -31,4 +32,11 @@
            (actual (postmodern:get-dao 'feather.db:username
                                        (feather.db:key dao))))
       (is (string-equal username (feather.db:username actual))))))
+
+(def-test insert-username-record-duplicate ()  
+  "Inserting a duplicate signals an error."
+  (with-fixture connected-db ()
+    (let* ((username (random-username)))
+      (feather.db::insert-username-record username)
+      (signals error (feather.db::insert-username-record username)))))
 
