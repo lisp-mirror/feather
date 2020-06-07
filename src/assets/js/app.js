@@ -2,7 +2,6 @@ function updateTable () {
     fetch('/api/usernames')
         .then(response => response.json())
         .then( data => {
-            //            var tbl = document.getElementById("table");
             var tbl = document.querySelector("#table");
             var oldBody = document.getElementsByTagName("tbody")[0];
             var tblBody = document.createElement("tbody");
@@ -28,6 +27,27 @@ function updateTable () {
         });
 }
 
+function sendData() {
+    const FD = new FormData( document.getElementById( "formAddName" ) );
+
+    fetch('/api/usernames', {
+        method: 'POST',
+        body: FD
+    })
+        .then(response => {
+            if (!response.ok) {
+                alert(response.statusText);
+            }
+            updateTable()
+        })
+};
+
 window.onload = function() {
+    document.getElementById( "formAddName" )
+        .addEventListener( "submit", function ( event ) {
+            event.preventDefault();
+            sendData();
+        });
+    
     updateTable();
 };
