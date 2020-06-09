@@ -44,16 +44,22 @@
                                     :method :post
                                     :parameters
                                     `(("username" . ,username)))
-        (is (= 200 *status-code*))
+        (is (= 400 *status-code*))
         ;; Response is JSON
         (is (string= "/api/usernames" (puri:uri-path *response-uri*)))
-        (is (string= "application/json"
+        (is (string= "application/problem+json"
                      (drakma:header-value :content-type *headers*)))
         (finishes (setf response (st-json:read-json-from-string *http-body*)))
         ;; Expected keys
-        (multiple-value-bind (value found) (st-json:getjso "key" response)
-          (is-true found)
-          (is (/= 0 value)))
-        (multiple-value-bind (value found) (st-json:getjso "username" response)
-          (is-true found)
-          (is-false (str:emptyp value)))))))
+        (multiple-value-bind (value found) (st-json:getjso "type" response)
+          (declare (ignore value))
+          (is-true found))
+        (multiple-value-bind (value found) (st-json:getjso "title" response)
+          (declare (ignore value))
+          (is-true found))
+        (multiple-value-bind (value found) (st-json:getjso "status" response)
+          (declare (ignore value))
+          (is-true found))
+        (multiple-value-bind (value found) (st-json:getjso "detail" response)
+          (declare (ignore value))
+          (is-true found))))))

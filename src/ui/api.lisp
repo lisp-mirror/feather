@@ -55,4 +55,9 @@
     (&post username)
   "Create a new username."
   (check-parameter-non-zero-string username)
-  (st-json:write-json-to-string (feather.logic:create-username username)))
+  (handler-case
+      (st-json:write-json-to-string (feather.logic:create-username username))
+    (CL-POSTGRES-ERROR:UNIQUE-VIOLATION (c)
+      (api-handler-error (type-of c)
+                         hunchentoot:+HTTP-BAD-REQUEST+
+                         (format nil "~A" c)))))
