@@ -1,7 +1,5 @@
 (in-package #:feather.logic)
 
-;;;; Users *********************************************************************
-
 (defun create-username (username)
   "Create a username. Return a hash table."
   (let* ((rec (feather.db:insert-username-record username)))

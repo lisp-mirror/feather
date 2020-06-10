@@ -5,8 +5,6 @@
       (list
        (hunchentoot:create-folder-dispatcher-and-handler "/assets/" (asdf:system-relative-pathname "feather" "src/assets/"))))
 
-;;;; Helpers *******************************************************************
-
 (defmacro check-parameter-non-zero-string (maybe-string)
   "Check if MAYBE-STRING is a string with non-zero length. Signal error if not."
   `(unless (and (stringp ,maybe-string) (not (str:emptyp ,maybe-string)))
@@ -47,8 +45,6 @@
                 "title" title
                 "status" status
                 "detail" detail)))
-
-;;;; Decorators ****************************************************************
 
 (defun @errors (next)
   "This decorator should be first in the list of decorators. It encapsulates

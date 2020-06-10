@@ -1,7 +1,5 @@
 (in-package #:feather)
 
-;;;; Conditions to indicate HTTP responses *************************************
-
 (define-condition api-handler-error (error)
   ((type :initarg :type
          :reader api-error-type

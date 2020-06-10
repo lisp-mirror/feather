@@ -7,7 +7,7 @@
 
 (let* ((output-dir (asdf:apply-output-translations 
                     (asdf:system-source-directory
-                     (asdf:find-system :sltv-server))))
+                     (asdf:find-system :feather))))
        (cache-dir (if (find :linux *features*)
                       (uiop:subpathname (user-homedir-pathname) 
                                         ".cache/common-lisp/")
