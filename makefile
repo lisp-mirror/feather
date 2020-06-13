@@ -2,11 +2,9 @@
 
 # Binary name
 TARGET = feather
-##       ^^^^^^^ CHANGE THIS!!
 
 # Quicklisp system to load
 QL_SYSTEM = feather
-##          ^^^^^^^ CHANGE THIS!!
 
 # Loading systems with quicklisp without having quicklisp in the image:
 # http://stackoverflow.com/questions/18917067/how-to-use-buildapp-in-combination-with-quicklisp
@@ -14,6 +12,7 @@ QL_SYSTEM = feather
 # Flags for manifest build
 MANIFEST_FLAGS =  --no-init 
 MANIFEST_FLAGS += --batch 
+MANIFEST_FLAGS += --eval '(push :djula-prod *features*)'
 MANIFEST_FLAGS += --load $(SRCDIR)/prep-quicklisp.lisp
 MANIFEST_FLAGS += --eval '(ql:quickload :qlot)'
 MANIFEST_FLAGS += --eval '(qlot:install :$(QL_SYSTEM))'
@@ -26,6 +25,7 @@ MANIFEST_FLAGS += --eval '(quit)'
 B_FLAGS =  --output $(BUILDDIR)/$(TARGET)
 B_FLAGS += --logfile $(BUILDLOG)
 B_FLAGS += --manifest-file $(MANIFEST)
+B_FLAGS += --eval '(push :djula-prod *features*)'
 B_FLAGS += --asdf-path $(CURDIR)/
 B_FLAGS += --asdf-tree $(SRCDIR)/
 B_FLAGS += --load-system $(QL_SYSTEM)
