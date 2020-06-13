@@ -79,15 +79,14 @@ the layers above and below it.
 ```
 
 1. Data model
-   : The data model provides the interface to the data. It is mostly DB access
-     but it can also be any other form of data store.
+: The data model provides the interface to the data. It is mostly DB access but
+it can also be any other form of data store.
      
 2. Logic
-   : The logic layer implements the application logic. Most of the work happens
-     here.
+: The logic layer implements the application logic. Most of the work happens here.
      
 3. UI
-   : The UI layer interacts the user.
+: The UI layer interacts the user.
 
 ## Production
 
