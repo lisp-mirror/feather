@@ -103,7 +103,7 @@ migrate:
 
 .PHONY: clean
 clean: 
-	-rm $(BUILDDIR)/*
+	-rm -r $(BUILDDIR)/*
 	-rm $(MANIFEST) $(BUILDLOG)
 
 cleanfasl:
