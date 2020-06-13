@@ -101,6 +101,16 @@ it can also be any other form of data store.
 * There are configuration files for Nginx and Systemd in the config directory
   of the repo.
 * Clone the modified feather repo on the server.
+* Create a directory `config` next to the cloned repo directory.
+* Inside `config` create a file `cfg-feather.lisp` with the following format:
+```
+(
+  :db-user "prod-user"
+  :db-name "prod-db-name"
+  :db-pwd "prod-pwd"
+  :db-host "prod-host"
+)
+```
 
 ### Deploy
 
