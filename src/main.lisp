@@ -17,13 +17,17 @@
   ;; Set the global DB connection parameter variable
   (setf *db-spec* (list *db-name* *db-user* *db-pwd* *db-host* :pooled-p t))
 
+  ;; Configure Huncentoot. Set assets location.
+  (setq hunchentoot:*dispatch-table*
+        (list (hunchentoot:create-folder-dispatcher-and-handler
+               "/assets/" (assets-directory-pathname))))
+  
   ;; Configure Hunchentoot. Don't show errors to users.
   (setf hunchentoot:*show-lisp-errors-p* nil)
   (setf hunchentoot:*show-lisp-backtraces-p* nil)
 
   (unless (in-emacs-p)
-    (format t "~&~A~%" (executable-directory-pathname)))
-  )
+    (format t "~&~A~%" (executable-directory-pathname))))
 
 (defun finalise ()
   ;; Finalisation code

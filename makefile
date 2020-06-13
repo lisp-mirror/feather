@@ -84,7 +84,8 @@ build_manifest: check_root
 build: check_root
 	mkdir -p $(BUILDDIR)
 	$(FIND) $(CURDIR)/src/ -exec touch {} \;
-	$(BUILDAPP) $(B_FLAGS) 
+	$(BUILDAPP) $(B_FLAGS)
+	cp -a $(SRCDIR)/assets $(BUILDDIR)
 
 .PHONY: install
 install:
@@ -92,7 +93,8 @@ install:
 	cp $(CURDIR)/infra/$(TARGET).service /lib/systemd/system/
 	systemctl daemon-reload
 # Feather binary
-	install -C -D -m 755 -o wimpie -g wimpie $(BUILDDIR)/$(TARGET) $(DESTDIR)/bin/$(BINNAME)
+	install -C -D -m 755 -o feather -g feather $(BUILDDIR)/$(TARGET) $(DESTDIR)/bin/$(BINNAME)
+# install assets. first delete then install
 	ln -sf $(DESTDIR)/bin/$(BINNAME) $(EXECDIR)/$(TARGET)
 
 .PHONY: migrate
