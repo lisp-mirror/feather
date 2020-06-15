@@ -9,6 +9,19 @@ The easiest way to use it is to clone this project and start modifying the code
 to be your application. The template is a functioning "Hello world" application
 complete with database access, migrations and tests.
 
+## Buy the book
+
+I wrote a book on how to deploy Common Lisp web applications to a cloud based
+server. The step-by-step guide in the book uses this template to demonstrate
+how to set up a CL web application. More detail at: [Deploying Common Lisp web
+applications](https://www.darkchestnut.com/book-cloud-deployment)
+
+## Clone the repo
+
+Please note: this is a Mercurial repo. To clone use the `hg` command.
+
+`hg clone https://hg.sr.ht/~wnortje/feather`
+
 ## Development
 
 ### Prepare the database
